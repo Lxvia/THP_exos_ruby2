@@ -1,19 +1,25 @@
-def ask_rows
-    puts "Give me a number between 1 to 25 :" 
-    print "->"
-    rows = gets.chomp.to_i
-    return rows 
+def ask_floor
+    puts "Salut, bienvenue dans ma pyramide ! Cb d'étages veut-tu ?"
+    print "> "
+    return gets.chomp.to_i
 end
 
-def pyramid
-    for i in 0..rows
-     i.times {print "#"}
-     puts
+def build_floor(total_floor, current_floor)
+    print " "*(current_floor-total_floor)
+    print "#"*(2*total_floor-1)
+    puts
+end
+
+def build_pyramid(total_floor)
+    puts "Voici la pyramide :"
+
+    total_floor.times do |current_floor|
+        build_floor(current_floor+1, total_floor)
     end
 end
 
-def perform
-    ask_rows = rows
+def full_pyramid
+    build_pyramid(ask_floor)
 end
 
-ask_rows 
+full_pyramid 
